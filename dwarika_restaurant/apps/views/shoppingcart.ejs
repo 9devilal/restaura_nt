@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>shopping cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <style type="text/css">
+    .bg-image {
+  /* The image used */
+  background-image: url("solid.jpg");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    .navbar-brand{
+      color: white !important;
+      font-size: 22px;
+    }
+    .navbar
+    {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+      position:static;
+      background-color: #00ccff !important;
+    }
+    a
+    {   color:  #f2f2f2;
+      text-decoration: none;
+    }
+    .cartinfo
+    {
+      min-height: 200px;
+      border: solid 0.5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      
+
+      padding:10px 10px 10px 10px;
+
+    }
+    .product
+    {
+      display: inline-block;
+    }
+    .name
+    {
+      padding-top: 0px;
+      color:#a366ff;
+      position: relative; 
+    }
+ 
+    input
+    {
+      width: 60px;
+      border: none;
+      padding-left: 23px;
+      color:#b30059; 
+    }
+    img
+    {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    }
+    
+    
+  </style>
+</head>
+<body >
+    <div class="navbar navbar-light bg-success">
+      <div class="navbar-brand">
+              
+        <a class="back" href="#"><i class="far fa-arrow-alt-circle-left mr-2"></i></a> Shopping Cart
+        
+      </div>
+    </div>
+
+  <div class="container">
+    
+        <%if(cart.length>0){%>
+      <% cart.forEach(function(row){%>
+      <div class="cartinfo my-2">
+      <div class="row ">
+      <div class="col ">
+      <img src="../<%=row.image%>" height="180" width="150">
+      <h3 class="name product"><span class="text-secondary pname"><%=row.productname%></span></h3>
+      <h4 class="price product text-center mx-3">Price: Rs<span class="prices text-dark ml-2"><%=row.price%></span></h4>
+      <h5 class="quantity product text-right ml-4">quantity: <input class="qvalue ml-2" type="number" name="quantity" min="0" value="1"></h5>
+    </div>
+  </div>
+</div>
+<%})}%>
+    <div class="total">
+      <p class="subtotal text-right text-information"><b>Cart Total</b> : Rs <span class=" text-danger mx-2">46</span>
+      </p>
+      <p class="discounttotal text-right"><b>Discount</b> :Rs<span class="text-danger mx-2">36</span></p>
+      <div style="height: 1px;background-color: rgba(0, 0, 0, 0.1);"></div>
+      <p class="grandtotal text-right"><b>Grand Total</b> :Rs<span class=" text-danger mx-2">10</span>
+        <br></p>
+        <button class="btn btn-success my-2"> Proceed to Checkout</button>
+  
+    </div>
+  </div> 
+  <script type="text/javascript">
+    $(document).ready(()=>{
+      calcTotal();
+
+      });
+     function calcTotal()
+      {
+       var price
+       var quantity
+       var total
+       var sum=0;
+       var currentClass;
+       var cartsum= $(".cartinfo");
+       console.log(cartsum.length)
+       for(var i=0;i<cartsum.length;i++)
+       {  console.log($(".cartinfo>.row>.col>h4>span")[i]);
+           price=$(".cartinfo>.row>.col>h4>span")[i].innerText;
+           quantity=$(".cartinfo>.row>.col>h5>input")[i].value;
+          if(quantity==0)
+           {
+            deletefromcart(i);
+            //location.reload();
+
+           } 
+           sum+=price*quantity;
+        }
+
+        $(".total>.subtotal>span")[0].innerText=sum;
+        $(".total>.grandtotal>span")[0].innerText=sum;
+
+      }
+      $('.qvalue').on('change',()=>{
+        calcTotal();});
+
+
+     function deletefromcart(index){
+      
+        console.log("this is" + $(".cartinfo>.row>.col>h3>span")[index].innerText)
+        $.ajax({
+          method:"DELETE",
+          url:"/cart",
+          data:{productname:$(".cartinfo>.row>.col>h3>span")[index].innerText}
+
+        });
+        $(".cartinfo")[index].remove();
+      }
+      $(".back").on('click',()=>{
+
+        $(".back").href=history.back();
+      });
+      
+  </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+ <html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="  sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../Desktop/stylesheets/landingpage">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript">function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+    }
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+ function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+  }
+function openNav(x) { 
+	x.classList.toggle("change");
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+	document.getElementById("menu").classList.toggle("change");
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}</script>
+
+</head>
+<body>
+
+<div class="bg" style="background-image: url('../direwolf.jpg')">
+	
+  <div id="mySidebar" class="sidebar">
+  	
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <img class=" sidebarimg ml-3" src="../<%=data.image%>" height="150" width="100">
+    <h1 class="text-light"><%=data.firstname%> <%=data.lastname%></h1>
+    <h4 class="text-light"><%=data.email%></h4>
+    <footer>
+    	<a class="text-success mb-5" href="#">My Orders</a>
+
+    	 </footer>
+     
+    <div style="height:1px;background-color:white;"></div>
+     <p class="text-left text-success">Social Links</p>
+     <ul>
+    <li><a href="#" class="fa fa-instagram" ></a></li>
+		        <li><a href="#" class="fa fa-twitter" ></a></li>
+		       <li><a href="#" class="fa fa-facebook" ></a></li>
+     
+
+</div>
+<div id="main" class="navbaar">
+       <div class="containerd" onclick="openNav(this)" id="menu" style="float: left;">
+         <div class="bar1"></div>
+         <div class="bar2"></div>
+         <div class="bar3"></div>
+        </div>
+        <div class="dwarika" style="float: left;font-size: 30px;color: #4080bf;" class="ml-2">
+        DWARIKA</div>
+       <div style="float: right;">
+        
+          <a href="../shoppingcart" class="notification ">
+         <span><i class="fas fa-shopping-cart fa-2x "></i></span>
+         <span class="badge">3</span>
+       </a>
+     </div>
+</div>
+</div>
+<div>
+
+<div class="container">
+
+	<div class="row justify-content-center my-1">
+ <%if(dishes.length>0){%>
+      <% dishes.forEach(function(row){%>
+  <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 mx-3 my-2">
+     <div class="card" name="card">
+       <img src="../<%=row.image%>" class="image" alt="Denim Jeans" style="width:100%">
+       <h1 class="pname"><%=row.name%></h1>
+       <p class="price" name="price"><%=row.price%></p>
+       <p class="desc"><%=row.category%></p>
+       <p class="now"><button class="cartbutton">Add to cart </button></p>
+     </div>
+</div>
+<%})}%>
+</div>
+</div>
+<script type="text/javascript">
+  $(document).ready(()=>{
+    console.log("document is ready");
+    $(".cartbutton").click((now)=>{
+      var here=now.currentTarget;
+     if(here.innerText=='Add to cart')
+     {
+    
+      console.log(here.innerHTML);
+       var x= here.parentElement.parentElement;
+       console.log(x);
+       var price=x.getElementsByClassName('price')[0].innerText;
+       var productName=x.getElementsByClassName('pname')[0].innerText;
+       var description=x.getElementsByClassName('desc')[0].innerText;
+       var image=x.getElementsByTagName('img')[0].src.slice(22);
+       //alert(image);
+       $.ajax(
+        {type:"POST",
+          url:'/cart',
+         data:{price:price,productName:productName,description:description,image:image}
+        });
+        here.innerText='Go to Cart';
+        console.log(x+"\n"+price);
+      }
+    else
+    {
+      location.href='../shoppingcart';
+    }
+
+  })
+  })
+   $(".notification").click(()=>{location.href='../shoppingcart';})
+</script>
+</body>
+</html>

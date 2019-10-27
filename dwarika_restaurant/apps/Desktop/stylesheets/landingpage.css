@@ -1,0 +1,274 @@
+
+
+.fas{
+  color: black !important;
+}
+.card:hover
+{
+  opacity: 0.7;
+}
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.fas .fa-shopping-cart
+{
+  color: white !important;
+  font-size: 2em !important;
+  height: 50px !important;
+  padding-right: 2px;
+}
+#topone,#toptwo
+{
+  width: 15px !important;
+}
+#cartbutton>span 
+{
+  padding-top: 0px !important;
+}
+.badge
+{
+  margin-top: 0px;
+}
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 150px;
+  height: 380px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  display: inline-block;
+}
+.card img{
+  height: 200px;
+  width: 150px;
+}
+.price {
+  color: grey;
+  font-size: 15px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+@media screen and (max-width: 576px;) {
+
+}
+
+    .sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #5cb85c;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  color: grey;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #5bc0de;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+  .dwarika{visibility: hidden;}
+}
+.icon-bar {
+  width: 90px; /* Set a specific width */
+  background-color: #555; /* Dark-grey background */
+  float: right ;
+}
+
+.icon-bar a {
+  display: block; /* Make the links appear below each other instead of side-by-side */
+  text-align: center; /* Center-align text */
+  padding: 16px; /* Add some padding */
+  transition: all 0.3s ease; /* Add transition for hover effects */
+  color: white; /* White text color */
+  font-size: 36px; /* Increased font-size */
+}
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+
+.icon-bar a:hover {
+  background-color: #000; /* Add a hover color */
+}
+
+.active {
+  background-color: #4CAF50; /* Add an active/current color */
+}
+body, html {
+  height: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url("./1571230259154.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.containerd {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+.navbar
+{
+  position: fixed;
+}
+.navbar-nav
+{
+  margin-right: 0px !important;
+} 
+#cart
+{
+  position: relative;
+  float: right;}
+  .fa
+{color: #555;
+  height: 50px!important;width: 50px!important;
+}
+.fa:hover
+{
+ color: #5bc0de; 
+}
+.navbaaar
+{
+  display: inline;
+}
+.bg-image {
+  /* The image used */
+  background-image: url("C:/Users/devilal/Downloads/joker.jpg");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+ height: 68%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.notification {
+  color:#a2a2c3;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  padding: 10px 13px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  
+}
+
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: #5bc0de;
+  color: white;
+  size: 0.7em;
+}
+.pname
+{
+  font-size: 30px;
+}
+.desc
+{
+  font-size: 22px;
+}

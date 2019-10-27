@@ -1,0 +1,136 @@
+
+	<title>signup page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style type="text/css">
+   .contain {
+  position: relative;
+  width: 100%; /* Maximum width */
+  margin: 0 auto; /* Center it */
+}
+
+.contain .content {
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  height: 100%;
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+input
+{
+  background: transparent !important;
+  border:transparent !important;
+  border-bottom: 1px solid   #00cc00 !important;
+  color:  #ff0066 !important;
+
+}
+@media only screen and (min-width:576px)
+{
+  input
+  {
+   min-width: 500px !important;
+   margin-bottom: 10px !importants;
+  }
+}
+input::-webkit-input-placeholder {
+  color: white;
+}
+label
+{
+  color:#00ccff!important;
+}
+button
+{
+width: 200px !important;
+border-radius: 1500px !important;
+
+}
+</style>
+</head>
+<body>
+<div class="contain">
+<img src="../ackground.jpg" alt="Notebook" style="width:100%;height: 100%;">
+<div class="content">
+ <div class="container">
+  <div class="centered">
+      <p class="h4 text-success text-center">SignUp Form</p>
+      <%if(flag){%>
+      <span class="badge badge-danger my-3 mr-2">Sorry!<br></span>
+      <p class="text-light">this email is taken try a different one</p>
+      <%}%>
+	 <form action="/dwarika_restaurant/sign" method="post" enctype="multipart/form-data" class="needs-validation" novalidate > 
+			
+          <div class="form-group">
+					<label for="firstname">FirstName</label>
+                       <input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Enter first name" required>
+                       <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+			</div>
+            
+
+				<div class="form-group">
+					<label for="lastname">LastName</label>
+                       <input type="text" class="form-control" name="lastname" id="lastname"placeholder="Enter Last Name" required="true"> <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+		
+			</div>
+    	<div class="form-group">
+       <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required="true"> <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required="true"> <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-group">
+    <label for="mobilenumber">Mobile number</label>
+    <input type="number" class="form-control" id="mobilenumber" name="mobile" placeholder="Mobile number" minlength="10" maxlength="10" required="true"> <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+     <small id="mobileHelp" class="form-text text-muted">We'll never share your number with anyone else.</small>
+
+  </div>
+  <div class="form-group">
+    <label for="profilephoto">upload your profile photo</label><br>
+    <input type="file" name="avatar" placeholder="upload your picture here" required="true">
+    </div>
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn btn-outline-primary my-3">Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+</body>
