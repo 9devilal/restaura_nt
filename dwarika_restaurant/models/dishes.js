@@ -40,5 +40,5 @@ const dishSchema = new Schema({
  
 });
 dishSchema.set('timestamps', true);
-var Detail = mongoose.model('Dish',dishSchema);//Dish ek naya collection ka naam h jo detailSchema follow krta h
+var Detail = mongoose.model('Dish',dishSchema);//Dish IS THE NAME OF COLLECTION FORMEDD IN DB
 module.exports=Detail;
